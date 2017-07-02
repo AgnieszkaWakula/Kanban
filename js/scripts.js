@@ -45,7 +45,7 @@ function createColumn() {
         self.removeColumn();
     });
     $columnAddCard.click(function(event) {
-        self.addCard(new Card('prompt("Enter the name of the card")));
+        self.addCard(new Card(prompt("Enter the name of the card")));
     });
 
 // CONSTRUCTION COLUMN ELEMENT
@@ -63,7 +63,8 @@ var self = this;
 
 this.id = randomString();
 this.description = description;
-this.$element = createCard(); //
+this.$element = createCard();
+}
 
 function createCard() {
     // CREATING THE BLOCKS
@@ -86,6 +87,7 @@ function createCard() {
 Card.prototype = {
 	removeCard: function() {
 		this.$element.remove();
+	}
 }
 
 var board = {
@@ -103,10 +105,6 @@ function initSortable() {
      placeholder: 'card-placeholder'
    }).disableSelection();
  }
-addColumn: function(column) {
-	this.$element.append(column.$element);
-	initSortable(); //About this feature we will tell later
-}
 
 $('.create-column')
   .click(function(){
@@ -132,5 +130,4 @@ var card2 = new Card('Create kanban boards');
 // DODAWANIE KART DO KOLUMN
 todoColumn.addCard(card1);
 doingColumn.addCard(card2);
-
 }
