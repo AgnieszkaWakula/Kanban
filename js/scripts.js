@@ -17,21 +17,6 @@ function Column(name) {
     this.name = name;
     this.$element = createColumn();
 
-    function createColumn() {
-    	// here is the code for creating the column, which you will find below
-    }
-  }
-
-Column.prototype = {
-    addCard: function(card) {
-      this.$element.children('ul').append(card.$element);
-    },
-    removeColumn: function() {
-      this.$element.remove();
-    }
-};
-
-
 function createColumn() {
 // CREATING COMPONENTS OF COLUMNS
     var $column = $('<div>').addClass('column');
@@ -57,6 +42,15 @@ function createColumn() {
 // RETURN OF CREATED COLUMN
     return $column;
 }
+
+Column.prototype = {
+    addCard: function(card) {
+      this.$element.children('ul').append(card.$element);
+    },
+    removeColumn: function() {
+      this.$element.remove();
+    }
+};
 
 function Card(description) {
 var self = this;
@@ -104,7 +98,7 @@ function initSortable() {
      connectWith: '.column-card-list',
      placeholder: 'card-placeholder'
    }).disableSelection();
- }
+}
 
 $('.create-column')
   .click(function(){
@@ -130,4 +124,4 @@ var card2 = new Card('Create kanban boards');
 // DODAWANIE KART DO KOLUMN
 todoColumn.addCard(card1);
 doingColumn.addCard(card2);
-}
+});
